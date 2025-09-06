@@ -103,7 +103,7 @@ const WeatherSearch: FC<WeatherSearchProps> = ({
    }
 
    if (city.trim() && city.trim().length >= 2 && !showSuggestions) {
-    console.debug('⏰ Debounced search triggered:', city.trim());
+    console.debug('Debounced search triggered:', city.trim());
     onSearchRef.current(city.trim());
    }
   }, 800);

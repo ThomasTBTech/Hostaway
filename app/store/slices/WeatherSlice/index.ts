@@ -29,7 +29,7 @@ export const fetchWeather = createAsyncThunk(
    return state.weather.weatherCache[cityKey];
   }
 
-  console.debug('🔄 Fetching fresh weather data for:', city);
+  console.debug('Fetching fresh weather data for:', city);
   const response = await fetchWeatherData(city);
   return response;
  },
@@ -58,11 +58,11 @@ export const fetchForecast = createAsyncThunk(
    state.weather.lastFetchTime[`${cityKey}_forecast`] &&
    now - state.weather.lastFetchTime[`${cityKey}_forecast`] < CACHE_DURATION
   ) {
-   console.debug('🔄 Using cached forecast data for:', city);
+   console.debug('Using cached forecast data for:', city);
    return { city: cityKey, data: state.weather.forecastCache[cityKey] };
   }
 
-  console.debug('🔄 Fetching fresh forecast data for:', city);
+  console.debug('Fetching fresh forecast data for:', city);
   const response = await fetch(
    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${process.env.EXPO_PUBLIC_OPENWEATHER_API_KEY}&units=metric&cnt=40`,
   );
